@@ -1,0 +1,53 @@
+NAME
+
+    Finance::Bank::DE::NetBank::Check - Bankaccount details
+
+SYNOPSIS
+
+	use Finance::Bank::DE::NetBank::Check;
+	# only first bankaccount
+	my($newdata,$other) = netbankcsv('0000000','000000','./Tesseract-OCR/tesseract');#kto, pin, tesseract for captcha
+
+	foreach my $key (keys %$other){# gesamtsaldo, iban, bic, owner, number, institute, lastlogin
+		print $key . ": " . ${$other}{$key} . "\n";
+	}
+
+	print "\nDetails:\n";
+
+	foreach my $key (@{$newdata}){
+		#foreach my $key2 (keys %{$key}){#buchungstag, wertstellungstag, verwendungszweck, umsatz, waehrung
+		#	print ${$key}{$key2};
+		#	print "\t";
+		#}
+
+		print ${$key}{buchungstag};
+		print "\n";
+		print ${$key}{wertstellungstag};
+		print "\n";
+		print ${$key}{verwendungszweck};
+		print "\n";
+		print ${$key}{umsatz};
+		print "\n";
+		print ${$key}{waehrung};
+		print "\n";
+	}
+
+DESCRIPTION
+
+Finance::Bank::DE::NetBank::Check - Bankaccount details
+
+AUTHOR
+
+    Stefan Gipper <stefanos@cpan.org>, http://www.coder-world.de/
+
+COPYRIGHT
+
+	Finance::Bank::DE::LBB::Creditcard is Copyright (c) 2012 Stefan Gipper
+	All rights reserved.
+
+	This program is free software; you can redistribute
+	it and/or modify it under the same terms as Perl itself.
+
+SEE ALSO
+
+    perl(1)
